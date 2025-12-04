@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Weather Monitor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="main-container">
+        <h2>🌦 AI Global Weather Station</h2>
+
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Enter City (e.g., Tokyo, New York)" />
+            <button onclick="getWeather()"><i class="fas fa-search"></i> Check</button>
+        </div>
+
+        <div id="loader" class="loader"></div>
+        <p id="errorMsg" class="error"></p>
+
+        <div id="resultBox" class="result-box">
+
+            <!-- Header Section -->
+            <div class="weather-header">
+                <div>
+                    <h1 id="cityName">City, Country</h1>
+                    <p id="weatherDesc">Condition</p>
+                </div>
+                <img id="wIcon" src="" alt="weather icon">
+            </div>
+
+            <!-- Main Temp Section -->
+            <div class="temp-section">
+                <span id="temp" class="big-temp">0</span><span class="unit">°C</span>
+                <p>Feels like <span id="feelsLike">0</span>°C</p>
+            </div>
+
+            <hr>
+
+            <!-- Detailed Grid -->
+            <div class="details-grid">
+                <div class="card">
+                    <i class="fas fa-wind"></i>
+                    <p>Wind</p>
+                    <span id="windSpeed">0</span> m/s
+                </div>
+                <div class="card">
+                    <i class="fas fa-tint"></i>
+                    <p>Humidity</p>
+                    <span id="humidity">0</span>%
+                </div>
+                <div class="card">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <p>Pressure</p>
+                    <span id="pressure">0</span> hPa
+                </div>
+                <div class="card">
+                    <i class="fas fa-eye"></i>
+                    <p>Visibility</p>
+                    <span id="visibility">0</span> km
+                </div>
+                <div class="card">
+                    <i class="fas fa-cloud-rain"></i>
+                    <p>Rain (1h)</p>
+                    <span id="rain">0</span> mm
+                </div>
+                <div class="card">
+                    <i class="fas fa-cloud"></i>
+                    <p>Clouds</p>
+                    <span id="clouds">0</span>%
+                </div>
+            </div>
+
+            <!-- AI Report Section -->
+            <div class="ai-container">
+                <h3><i class="fas fa-robot"></i> AI Analysis</h3>
+                <p id="aiReport">Waiting for analysis...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
